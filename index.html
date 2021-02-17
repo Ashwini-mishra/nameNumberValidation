@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Validation</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h1>validation of name and number</h1>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" placeholder="Enter Full Name" id="name">&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="phone">Phone Number</label>
+            <input type="text" placeholder="phone number" id="phone"><br><br>
+            <input type="button" value='submit' onclick="myFunction()">
+        </form>
+    </div>
+</body>
+<script>
+    function myFunction()
+    {
+        var first;
+        let name=document.getElementById("name").value;
+        let phone=document.getElementById("phone").value;
+        name=name.trim();
+        if(name != null && name.length == 10)
+        {
+            if(name.includes('m') || name.includes('M'))
+            {
+                var letters = /^[A-Za-z ]+$/;
+                if(name.match(letters))
+                {
+                    first = name.charAt(0).toUpperCase() + name.toLowerCase().slice(1,name.length+1);
+                    // alert(first);
+                }
+                else{
+                    alert("Enter Correct Name")
+                }
+            }else{
+                console.log("Please insert letter 'm' is compulsory");
+            }
+        }else
+        {
+            console.log("Please insert 10 alphabet with letter 'm' is compulsory");
+        }
+
+        if(phone != null && phone.length == 10)
+        {
+            var letters = /^[0-9]+$/;
+                if(phone.match(letters))
+                {
+                    first=first.replace(" ", "_");
+                    alert("Name :"+first+'\n'+"Phone :"+phone);
+                }
+                else{
+                    alert("Enter Correct phone number")
+                }
+        }
+        else{
+            console.log("Enter Correct Name and number. Name with 10 with 'm' is compulsory letters and without numbers and special characters")
+        }
+    }
+</script>
+</html>
